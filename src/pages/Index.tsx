@@ -30,42 +30,32 @@ const Index = () => {
   }, []);
 
   const skills = [
-    { name: "Python", icon: Code, level: 85 },
+    { name: "Python", icon: Code, level: 75 },
     { name: "C Programming", icon: FileCode, level: 80 },
-    { name: "HTML & CSS", icon: FileCode, level: 90 },
-    { name: "Git", icon: GitBranch, level: 75 },
-    { name: "Problem Solving", icon: Lightbulb, level: 88 },
-    { name: "Data Structures", icon: Database, level: 70 },
+    { name: "GitHub", icon: GitBranch, level: 50 },
+    { name: "Problem Solving", icon: Lightbulb, level: 50 },
   ];
 
-  const projects = [
+  const certificates = [
     {
-      title: "E-Commerce Website",
-      description: "A responsive e-commerce platform built with HTML, CSS, and JavaScript featuring product catalog and shopping cart.",
-      tech: ["HTML", "CSS", "JavaScript"],
-      github: "#",
-      demo: "#",
+      title: "Git & GitHub Bootcamp",
+      organization: "Lets Upgrade",
+      description: "Completed comprehensive bootcamp on Git version control and GitHub collaboration.",
     },
     {
-      title: "Weather App",
-      description: "Real-time weather application using API integration to display current weather conditions and forecasts.",
-      tech: ["Python", "API Integration"],
-      github: "#",
-      demo: "#",
+      title: "Cyber Security Workshop and Hackathon",
+      organization: "Workshop & Hackathon",
+      description: "Participated in cyber security workshop and hackathon, gaining hands-on experience in security practices.",
     },
     {
-      title: "Task Manager",
-      description: "A clean and intuitive task management application with CRUD operations and local storage.",
-      tech: ["JavaScript", "LocalStorage"],
-      github: "#",
-      demo: "#",
+      title: "Certificate of Excellence",
+      organization: "Academic Achievement",
+      description: "Awarded certificate of excellence as the best student for outstanding academic performance.",
     },
     {
-      title: "Portfolio Template",
-      description: "Modern and responsive portfolio template for developers with smooth animations and mobile-first design.",
-      tech: ["HTML", "CSS", "Tailwind"],
-      github: "#",
-      demo: "#",
+      title: "Certificate of Appreciation",
+      organization: "Recognition Award",
+      description: "Received certificate of appreciation for contributions and dedication.",
     },
   ];
 
@@ -73,7 +63,7 @@ const Index = () => {
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
+    { id: "certificates", label: "Certificates" },
     { id: "education", label: "Education" },
     { id: "contact", label: "Contact" },
   ];
@@ -214,47 +204,27 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-background">
+      {/* Certificates Section */}
+      <section id="certificates" className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center text-foreground animate-on-scroll">Projects</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {projects.map((project, index) => (
+          <h2 className="text-4xl font-bold mb-12 text-center text-foreground animate-on-scroll">Certificates</h2>
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {certificates.map((certificate, index) => (
               <Card
-                key={project.title}
-                className="overflow-hidden shadow-soft hover:shadow-hover transition-smooth animate-on-scroll gradient-card"
+                key={certificate.title}
+                className="p-6 shadow-soft hover:shadow-hover transition-smooth animate-on-scroll gradient-card"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <Code className="h-16 w-16 text-primary" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-foreground">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                <div className="flex items-start mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                    <Code className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="flex gap-4">
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" />
-                        Code
-                      </a>
-                    </Button>
-                    <Button size="sm" asChild>
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        Demo
-                      </a>
-                    </Button>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-1">{certificate.title}</h3>
+                    <p className="text-sm text-primary font-semibold">{certificate.organization}</p>
                   </div>
                 </div>
+                <p className="text-muted-foreground">{certificate.description}</p>
               </Card>
             ))}
           </div>
@@ -307,15 +277,37 @@ const Index = () => {
                   <Input id="email" type="email" placeholder="your.email@example.com" />
                 </div>
                 <div>
+                  <label htmlFor="phone" className="block text-sm font-medium mb-2 text-foreground">
+                    Phone
+                  </label>
+                  <Input id="phone" type="tel" placeholder="Your phone number" />
+                </div>
+                <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
                     Message
                   </label>
                   <Textarea id="message" placeholder="Your message..." rows={5} />
                 </div>
-                <Button type="submit" className="w-full transition-smooth hover:scale-105">
-                  Send Message
-                </Button>
               </form>
+              <div className="mt-8 pt-8 border-t border-border">
+                <h3 className="text-lg font-semibold mb-4 text-foreground">Contact Information</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center text-foreground">
+                    <Mail className="h-5 w-5 mr-3 text-primary" />
+                    <a href="mailto:ramyapulugurtha07@gmail.com" className="hover:text-primary transition-smooth">
+                      ramyapulugurtha07@gmail.com
+                    </a>
+                  </div>
+                  <div className="flex items-center text-foreground">
+                    <svg className="h-5 w-5 mr-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <a href="tel:9032620594" className="hover:text-primary transition-smooth">
+                      9032620594
+                    </a>
+                  </div>
+                </div>
+              </div>
             </Card>
           </div>
         </div>
@@ -346,7 +338,7 @@ const Index = () => {
                 <Linkedin className="h-6 w-6" />
               </a>
               <a
-                href="mailto:ramyapulugurtha@example.com"
+                href="mailto:ramyapulugurtha07@gmail.com"
                 className="text-foreground hover:text-primary transition-smooth"
               >
                 <Mail className="h-6 w-6" />
